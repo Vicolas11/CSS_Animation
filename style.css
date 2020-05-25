@@ -1,0 +1,327 @@
+html  {
+  box-sizing: border-box;
+  font-family: times, sans-serif;
+}
+
+*,*:before,*:after {
+  box-sizing: inherit;
+}
+
+body  {
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.box-wrapper {
+  width: 200px;
+  height: 200px;
+  border: 10px solid black;
+  margin: 50px auto;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  background: grey;
+  transform-origin: bottom right;
+  transition: transform 2s ease-in;
+  pointer-events: none;
+}
+
+.box-wrapper:hover .box {
+  transform: rotate(45deg);
+}
+
+.circle-wrapper {
+  width: 200px;
+  height: 200px;
+  border: 3px solid black;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background: black;
+  position: relative;
+  border-radius: 50%;
+  animation: round 5s linear;
+}
+
+@keyframes round {
+  0% {
+    transform: rotate(0deg);
+    top: 10px;
+  }
+  100% {
+    transform: rotate(15deg);
+    top: 50px;
+  }
+}
+
+label {
+  position:relative;
+  left: 50px;
+  display: inline-block;
+  width: 110px;
+  height: 50px;
+  border-radius: 50px;
+  background: black;
+  margin: 10px auto;
+}
+
+#checkbox {
+  display: none;
+}
+
+#btn {
+  display: inline-block;
+  position: absolute;
+  top: -15px;
+  left: -5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: grey;
+  margin: 10px auto;
+  transition: all .5s linear;
+}
+
+/* #btn::before {
+  position: absolute;
+  top:1px;
+  left:20px;
+  left: 12px;
+  color: white;
+  font-size: 35px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+} */
+
+#btn::after {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: white;
+  font-size: 34px;
+  content: 'off'
+}
+
+#checkbox:checked + #btn {
+  background: lightblue;
+  top: -15px;
+  left: 55px;
+  transform: rotate(360deg);
+}
+
+/* #checkbox:checked + #btn::before {
+  top: 4px;
+  left: -50px;
+} */
+
+#checkbox:checked + #btn::after {
+  top: 5px;
+  left: 12px;
+  content: 'on'
+}
+
+.progress-wrapper {
+  max-width: 900px;
+  margin: 50px auto;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 40px;
+}
+
+.progress {
+  width: 10%;
+  height: 100%;
+  transition: width 10s ease-in;
+  background: green;
+  /* animation: move 5s ease-in .1s; */
+  box-shadow: 3px 0px 2px black;
+  border-radius: 40px;
+}
+
+.progress::before {
+  position: relative;
+  top: 5px;
+  left: 12px;
+  content: 'start';
+  font-size: 30px;
+  color: white;
+}
+
+.progress-wrapper:hover .progress::before {
+  left: 800px;
+  content: 'end';
+  color: white;
+}
+
+.progress-wrapper:hover .progress {
+  width: 100%;
+}
+
+/* @keyframes move {
+  0%  {
+    width: 0%;
+    background: red;
+  };
+  50% {
+    width: 100%;
+    background: yellow;
+  };
+  100% {
+    width: 0%;
+    background: green;
+  };
+} */
+/* MOVING CAR ASSUMILATION */
+.car-wrapper {
+  background: #808080;
+  height: 380px;
+  padding: 20px;
+}
+
+#car-wrapper {
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+  /* border: 2px solid black; */
+}
+
+.wheel_1 {
+  position: relative;
+  top: -40px;
+  left: 250px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px dashed black;
+  background: red;
+  color: white;
+  font-weight: bold;
+  animation: spinmove 2s linear .9s alternate 5;
+}
+
+.wheel_2 {
+  position: relative;
+  top: -140px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px dashed black;
+  background: red;
+  color: white;
+  font-weight: bold;
+  animation: spinmove 2s linear .9s alternate 5;
+}
+
+.car-body {
+  position: relative;
+  width: 400px;
+  height: 150px;
+  background: black;
+  animation: bodymove 2s linear .9s alternate 5;
+}
+
+.car-front {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: red;
+  animation: bodymove 2s linear .9s alternate 5;
+}
+
+@keyframes bodymove {
+  to {
+    transform: translateX(1800px);
+  };
+  from {
+    transform: rotate(360deg);
+  };
+}
+
+.car-front::before {
+  position: relative;
+  top: 62px;
+  left: 8px;
+  font-size: 50px;
+  font-weight: bolder;
+  content: 'Am Moving';
+  transition: content 1s ease-in 5;
+}
+
+.car-wrapper:hover .car-front::before {
+  content: 'Nice One'
+}
+
+@keyframes spinmove {
+  to {
+    transform: translateX(1800px) rotate(360deg);
+    border: 5px dashed yellow;
+    background: #FFD700;
+    color:black;
+  };
+
+  from {
+    transform: translateX(0px) rotate(360deg);
+  };
+}
+
+.flip-wrapper {
+  border: 2px solid black;
+}
+
+.flip {
+  background: #ddd;
+  margin: 20px auto;
+  max-width: 960px;
+  padding-top: 250px;
+  height: 600px;
+  transition: transform 1s ease-out;
+}
+
+.flip-2 {
+  background: grey;
+  margin: 20px auto;
+  max-width: 960px;
+  padding-top: 250px;
+  height: 600px;
+  transition: transform 1s ease-out;
+}
+
+/* .flip-wrapper:hover {
+  transform: skew(0deg,30deg);
+} */
+
+#but {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto;
+  width: 500px;
+  padding: 20px 80px;
+  font-size: 50px;
+  border-radius: 50px;
+  box-shadow: 0 25px 10px -10px black;
+}
+
+/* .flip-wrapper-2:hover {
+  transform: skew(0deg,30deg);
+} */
+
+#but-2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto;
+  width: 500px;
+  padding: 20px 80px;
+  font-size: 50px;
+  border-radius: 50px;
+  box-shadow: 0 25px 10px -10px black;
+}
